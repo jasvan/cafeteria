@@ -39,7 +39,8 @@ class ProductoController extends Controller
 
     public function edit(Request $request, $id)
     {
-         $productos = Producto::findOrFail($request->id);   
+         $productos = Producto::findOrFail($request->id)
+         ->where('total' != 0);   
          $productos->decrement('total');
          $productos->increment('vendidos');
          $productos-> save();
