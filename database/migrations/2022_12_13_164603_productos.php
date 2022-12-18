@@ -18,7 +18,7 @@ return new class extends Migration
             $table->char('peso', 6);
             $table->char('categoria', 10);
             $table->integer('total');            
-            $table->integer('vendidos');            
+            $table->integer('vendidos')->default(0);            
             $table->timestamps();
         });
     }
