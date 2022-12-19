@@ -1,3 +1,10 @@
+Informacion sobre la app, descargue el archivo y descomprima en una carpeta htdocs de xampp para mayor facilicadad
+
+abra la carpteta con la consolade comandos y desde el archivo principal ejecute el comando php artisan install para que quede confirado el proyecto
+
+finalmente inicie el servidor con php artisan serve.
+
+directorio de archivos del sitio
 
 ```
 cafe
