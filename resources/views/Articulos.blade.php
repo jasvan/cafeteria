@@ -42,7 +42,7 @@
     </thead>
     @foreach ($productos as $item)
     <tbody>
-      @if(session()->has('msg'))
+        @if(session()->has('msg'))
             <p class="italic text-xs text-blue-900">{{ session('msg') }}</p>
         @endif
       <tr>

@@ -35,8 +35,7 @@ class ProductoController extends Controller
         $producto-> precio = $request->precio;
         $producto-> peso = $request->peso;
         $producto-> categoria = $request->categoria;
-        $producto-> total = $request->total;
-        
+        $producto-> total = $request->total;        
         $producto->save();        
         return redirect()->route('productos');
        
@@ -50,15 +49,18 @@ class ProductoController extends Controller
     public function patch(Request $request, $id)
     {
         $productos = Producto::findOrFail($request->id);
+        $productos->where('total' > 0);
 
-        if($productos['total'] != 0){
-        
-            $productos->decrement('total');
-            $productos->increment('vendidos'); 
+         if($productos['total'] > 0){        
+            $productos-> decrement('total');
+            $productos-> increment('vendidos');
+            session()->  flash('msg', 'Compra realizada !');
+            return redirect()->route('venta.producto');
         }else{
-            session()->flash('msg', 'Producto agotado');
+            session()->flash('msg', 'Producto agotado !');
+            return redirect()->route('venta.producto');
         }
-        return redirect()->route('venta.producto');
+        
     }
 
     public function update(Request $request, $id)
